@@ -1,20 +1,64 @@
-document.getElementById('cover').addEventListener('click', () => {
-    document.getElementById('cover').style.display = 'none';
-    document.getElementById('book').style.display = 'block';
-});
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
 
-let currentPage = 1;
+#book-container {
+    position: relative;
+    width: 800px;  /* Ajusta según sea necesario */
+    height: 400px;  /* Ajusta según sea necesario */
+    perspective: 1000px;
+}
 
-document.getElementById('nextPage').addEventListener('click', () => {
-    if (currentPage < document.querySelectorAll('.page').length) {
-        document.getElementById(`page${currentPage}`).style.transform = 'rotateY(-180deg)';
-        currentPage++;
-    }
-});
+#cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-document.getElementById('prevPage').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        document.getElementById(`page${currentPage}`).style.transform = 'rotateY(0deg)';
-    }
-});
+#cover img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#book {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none; /* Mostrar después de abrir el libro */
+}
+
+.page {
+    position: absolute;
+    width: 50%; /* La mitad del contenedor del libro */
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+    transform-origin: left;
+    transition: transform 1s;
+    backface-visibility: hidden;
+}
+
+.page .content {
+    padding: 20px;
+}
+
+#page2 {
+    transform: rotateY(180deg);
+}
+
+button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
