@@ -1,3 +1,8 @@
+document.getElementById('cover').addEventListener('click', () => {
+    document.getElementById('cover').style.display = 'none';
+    document.getElementById('book').style.display = 'block';
+});
+
 let currentPage = 1;
 
 document.getElementById('nextPage').addEventListener('click', () => {
